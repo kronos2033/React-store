@@ -1,0 +1,9 @@
+.header {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo {
+  width: 40px;
+}

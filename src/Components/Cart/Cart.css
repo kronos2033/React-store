@@ -1,0 +1,23 @@
+.cart {
+    position: fixed;
+    top: 30px;
+    right: 50px;
+}
+
+.cart__btn{
+    width: 100px;
+    height: 50px;
+    background-image: url(../../img/cart.svg);
+    background-color: rgb(240, 210, 210);
+    border-radius: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-style: none;
+    outline: none;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
