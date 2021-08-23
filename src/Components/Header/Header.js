@@ -1,15 +1,20 @@
 import './Header.css';
 import Cart from '../Cart/Cart';
-import logo from '../../img/logo.svg'
+import logo from '../../img/logo.svg';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
-    <div className='wrapper '>
-    <div className='header'>
-      <img className='header__logo' src={logo} />
-      <p className='header__title'>React Shop</p>
-      <Cart />
-      </div>
-    </div>
+    <header className='header'>
+      <Link to='/'>
+        <img className='header__logo' src={logo} alt='header-logo' />
+      </Link>
+      <p className='header__title'>
+        <b>R</b>eact <b>S</b>tore
+      </p>
+      <Link to='/purchases'>
+        <Cart />
+      </Link>
+    </header>
   );
 }

@@ -1,9 +1,43 @@
+@keyframes logo-transform {
+  0% {
+    -webkit-transform: scale(0, 0);
+    -moz-transform: scale(0, 0);
+    -ms-transform: scale(0, 0);
+    -o-transform: scale(0, 0);
+    transform: scale(0, 0);
+  }
+  30% {
+    -webkit-transform: scale(0, 0);
+    -moz-transform: scale(0, 0);
+    -ms-transform: scale(0, 0);
+    -o-transform: scale(0, 0);
+    transform: scale(0, 0);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+
+
 .header {
-  margin: 20px 0;
+  margin: 1em 0;
   display: flex;
-  justify-content: space-between;
+  justify-content:flex-start;
 }
 
 .header__logo {
-  width: 40px;
+  width: 3em;
+  animation: logo-transform  1s ease-in-out;
+  -webkit-animation: logo-transform  1s ease-in-out;
+}
+
+.header__title {
+  font-style: normal;
+  font-size: 1.5em;
+  align-self: center;
+  margin: 0 1em 0 ;
 }

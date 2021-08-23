@@ -1,12 +1,37 @@
 @import url('./vendor/normalize.css');
 body {
-  margin: 0 auto;
   font-family: 'Source Serif Pro', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html,body, #root {
+  height: 100%;
+}
 
 .wrapper {
+  min-height:100%;
+  font-size: 16px;
+  display:flex;
+  flex-direction: column;
   width: 1200px;
   margin: 0 auto;
+}
+
+
+
+.link {
+  text-decoration: none;
+  color: #000
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    width: 680px;
+  }
+}
+
+@media (max-width: 320px) {
+  .wrapper {
+    width: 290px;
+  }
 }

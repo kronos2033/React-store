@@ -1,0 +1,14 @@
+.about {
+    margin-top: 10em;
+    text-align: center;
+    flex: 1 1 auto;
+}
+
+.about__title {
+font-size: 2em;
+margin-top: 1em;
+}
+
+.about__text {
+    font-size: 1.25em;
+}

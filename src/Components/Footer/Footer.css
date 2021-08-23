@@ -1,0 +1,9 @@
+.footer{
+    margin: 2em auto;
+    display: flex;
+    justify-content: flex-end;
+}
+.footer__copyright {
+    margin-right: 2em;
+}
+
