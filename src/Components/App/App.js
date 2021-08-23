@@ -24,13 +24,12 @@ function App() {
         <Header />
         <Switch>
           <Route exact path='/'>
-
           { isLoading? <Preloader/> : <ProductList products={initialProducts}/>}
           </Route>
           <Route path='/about'>
             <AboutUs />
           </Route>
-          <Route path='purchases'>
+          <Route path='/purchases'>
             <Purchases />
           </Route>
         </Switch>

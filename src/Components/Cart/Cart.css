@@ -7,7 +7,7 @@
 
 .cart__btn{
     width:5.5em;
-    height: 2.75em;
+    height: 3em;
     background-image: url(../../img/cart.svg);
     border-radius: 10rem;
     background-size: contain;
@@ -22,7 +22,7 @@
 }
 
 .cart__counter {
-margin: 1.5em 0 0 4.4em;
+margin: 1.8em 0 0 4.4em;
 }
 .cart__btn:hover {
     opacity: 0.8;
