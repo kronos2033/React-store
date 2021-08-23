@@ -1,22 +1,23 @@
+import { clearConfigCache } from 'prettier';
 import React from 'react';
+import ProductCard from '../ProductCard/ProductCard';
 import './ProductList.css';
-import ProductCard from '../ProductCard/ProductCard'
 
-export default function ProductList() {
+export default function ProductList(props) {
   return (
-    
-      <div className='product-list'>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-      </div>
-    
+    <div className='product-list'>
+      {props.products.map((product) => {
+        console.log(product.image)
+        return (
+          <ProductCard
+            key={product.id}
+            title={product.title}
+            description={product.description}
+            img={product.image}
+            price={product.price}
+          />
+        );
+      })}
+    </div>
   );
 }

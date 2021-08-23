@@ -2,17 +2,22 @@ import './ProductCard.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
 
-export default function ProductCard() {
+export default function ProductCard(props) {
   return (
-    <Card style={{ width: '32em' }} className=''>
-      <Card.Img variant='top' src='holder.js/100px180' alt='product-image' className='' />
+    <div className='card'>
+    <Card style={{ width: '32em' }}>
+      <Card.Img variant='top' src={props.img} alt='product-image' className='card__img' />
       <Card.Body>
-        <Card.Title>Название товара</Card.Title>
+        <Card.Title>{props.title}</Card.Title>
         <Card.Text>
-          Описание товара
+          {props.description}
         </Card.Text>
+        <div className='product-card__container'>
+        <span className='product-card__price'>{props.price}</span>
         <Button variant='primary'>Добавить в корзину</Button>
+        </div>
       </Card.Body>
     </Card>
+    </div>
   );
 }
