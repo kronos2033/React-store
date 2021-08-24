@@ -1,4 +1,4 @@
-const URL = 'https://def3-79-134-200-98.ngrok.io/ai-product';
+const URL = 'http://bf93-79-134-200-98.ngrok.io/ai-product/';
 const headerdData = {
     Accept: 'application/json',
 'Content-Type': 'application/json',

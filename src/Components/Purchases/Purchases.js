@@ -1,9 +1,22 @@
-import './Purchases.css'
-
-export default function Purchases() {
-    return (
-        <div className='purchases'>
-            <pc className ='purchases__text'>Тут будут покупки</pc>
-        </div>
-    )
+import './Purchases.css';
+import ProductCard from '../ProductCard/ProductCard';
+export default function Purchases({ purchaseList,deletePurchase }) {
+    const isProduct = false
+  return (
+    <div className='purchases'>
+      {purchaseList.map((purchase) => {
+        return (
+          <ProductCard
+            key={purchase.id}
+            id={purchase.id}
+            title={purchase.title}
+            img={purchase.img}
+            price={purchase.price}
+            deletePurchase={deletePurchase}
+            isProduct ={isProduct}
+          />
+        );
+      })}
+    </div>
+  );
 }

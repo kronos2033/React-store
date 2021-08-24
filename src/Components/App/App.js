@@ -6,31 +6,66 @@ import Purchases from '../Purchases/Purchases';
 import { getProductData } from '../../utils/mainApi';
 import { useState, useEffect } from 'react';
 import AboutUs from '../AboutUs/AboutUs';
-import Preloader from '../Preloader/Preloader'
+import Preloader from '../Preloader/Preloader';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   const [initialProducts, setInitialProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
+  const [purchaseList, setPurchaseList] = useState([]);
+  const purchaseCounter = purchaseList.length;
+
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
+    const initialPurchase = JSON.parse(localStorage.getItem('purchaseList'));
+    setPurchaseList(initialPurchase);
     getProductData().then((data) => {
-      setIsLoading(false)
-      setInitialProducts(data)});
+      setIsLoading(false);
+      setInitialProducts(data);
+    });
   }, []);
+
+  const addProduct = (img, title, price, id) => {
+    setPurchaseList((purchaseList) => {
+      const newItem = { title, price, img, id };
+      const items = [...purchaseList, newItem];
+      localStorage.setItem('purchaseList', JSON.stringify(items));
+      return items;
+    });
+  };
+
+  const deletePurchase = (id) => {
+    setPurchaseList((purchaseList) => {
+      const idx = purchaseList.findIndex((el) => el.id === id);
+      const items = [
+        ...purchaseList.slice(0, idx),
+        ...purchaseList.slice(idx + 1),
+      ];
+      localStorage.setItem('purchaseList', JSON.stringify(items));
+      return items;
+    });
+  };
+
   return (
     <Router>
       <div className='wrapper'>
-        <Header />
+        <Header counter={purchaseCounter} />
         <Switch>
           <Route exact path='/'>
-          { isLoading? <Preloader/> : <ProductList products={initialProducts}/>}
+            {isLoading ? (
+              <Preloader />
+            ) : (
+              <ProductList products={initialProducts} addProduct={addProduct} />
+            )}
           </Route>
           <Route path='/about'>
             <AboutUs />
           </Route>
           <Route path='/purchases'>
-            <Purchases />
+            <Purchases
+              purchaseList={purchaseList}
+              deletePurchase={deletePurchase}
+            />
           </Route>
         </Switch>
         <Footer />
@@ -41,4 +76,4 @@ function App() {
 
 export default App;
 
-//TODO
+//TODO shadow in header,

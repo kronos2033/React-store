@@ -1,20 +1,37 @@
 import './ProductCard.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
+import CloseButton from 'react-bootstrap/CloseButton'
+export default function ProductCard({ img, title, description, price, id, addProduct,deletePurchase, isProduct}) {
+  const floverImage =
+  'https://flowers-expert.ru/upload/iblock/d30/d30417173593176bf61c7da7d52d7099.jpg';
 
-export default function ProductCard(props) {
+  const style = isProduct? { width: '32em' } : { width: '40em' }
+  const addToCart = () => {
+    addProduct(img, title, price,id)
+  }
+
+  const handleDelete = () => {
+    deletePurchase(id)
+  }
+
   return (
+
+    
     <div className='card'>
-    <Card style={{ width: '32em' }}>
-      <Card.Img variant='top' src={props.img} alt='product-image' className='card__img' />
+    <Card style={style}>
+      <Card.Img variant='top' src={floverImage} alt='product-image' className='card__img' />
       <Card.Body>
-        <Card.Title>{props.title}</Card.Title>
+        <Card.Title>{title}</Card.Title>
         <Card.Text>
-          {props.description}
+          {description}
         </Card.Text>
         <div className='product-card__container'>
-        <span className='product-card__price'>{props.price}</span>
-        <Button variant='primary'>Добавить в корзину</Button>
+        <span className='product-card__price'>{`${price} RUP`}</span>
+        {isProduct? 
+        <Button variant='primary' onClick={addToCart}>Добавить в корзину</Button>:
+        <CloseButton onClick={handleDelete}/>
+        }
         </div>
       </Card.Body>
     </Card>
