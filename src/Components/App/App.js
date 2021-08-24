@@ -25,9 +25,9 @@ function App() {
     });
   }, []);
 
-  const addProduct = (img, title, price, id) => {
+  const addProduct = (img, title, price, id, count) => {
     setPurchaseList((purchaseList) => {
-      const newItem = { title, price, img, id };
+      const newItem = { title, price, img, id, count };
       const items = [...purchaseList, newItem];
       localStorage.setItem('purchaseList', JSON.stringify(items));
       return items;
@@ -55,7 +55,9 @@ function App() {
             {isLoading ? (
               <Preloader />
             ) : (
-              <ProductList products={initialProducts} addProduct={addProduct} />
+              <ProductList products={initialProducts} addProduct={addProduct} 
+                purchaseList={purchaseList}
+              />
             )}
           </Route>
           <Route path='/about'>
@@ -76,4 +78,4 @@ function App() {
 
 export default App;
 
-//TODO shadow in header,
+//TODO shadow in header, cart with price, count

@@ -1,18 +1,28 @@
 .card {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 .product-card__container {
-    display: flex;
-    justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 10em);
+  justify-content: space-between;
 }
 
 .product-card__price {
-    font-style: italic;
-    font-size: 1em;
-    align-self: center;
+  font-style: italic;
+  font-size: 1em;
+  align-self: center;
 }
 
 .card__img {
-    height: 25em;
-    object-fit: cover;
+  height: 25em;
+  object-fit: cover;
+}
+
+.card__close-btn {
+  justify-self: end;
+}
+
+.card__select {
+  justify-self: center;
+  width: 3em;
 }
