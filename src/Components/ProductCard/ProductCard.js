@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import CloseButton from 'react-bootstrap/CloseButton';
 import { calculatePrice } from '../../utils/functions';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 export default function ProductCard({
   img,
   title,
@@ -15,18 +15,20 @@ export default function ProductCard({
   deletePurchase,
   isProduct,
   isAdded,
-  setPrice,
-  setCartList,
+  handleTotal
 }) {
   const [value, setValue] = useState(1);
-  const floverImage ='https://flowers-expert.ru/upload/iblock/d30/d30417173593176bf61c7da7d52d7099.jpg';
+  const floverImage =
+    'https://flowers-expert.ru/upload/iblock/d30/d30417173593176bf61c7da7d52d7099.jpg';
   const style = isProduct ? { width: '32em' } : { width: '60em' };
   let selectArray = [];
-
   for (let i = 0; i < count; i++) {
     selectArray[i] = i + 1;
   }
-
+  useEffect(()=> {
+    handleTotal(calculatePrice(price, value))
+  }, [])
+ 
   const addToCart = () => {
     addProduct(img, title, price, id, count);
   };
@@ -35,8 +37,8 @@ export default function ProductCard({
     deletePurchase(id);
   };
   const handleChange = (e) => {
+    handleTotal(calculatePrice(price, e.target.value - value))
     setValue(e.target.value);
-    setPrice(calculatePrice(price, e.target.value))
 
   };
   return (
@@ -63,7 +65,11 @@ export default function ProductCard({
                 onChange={handleChange}
               >
                 {selectArray.map((i) => {
-                  return <option key={i} value={i}>{i}</option>;
+                  return (
+                    <option key={i} value={i}>
+                      {i}
+                    </option>
+                  );
                 })}
               </select>
             )}
