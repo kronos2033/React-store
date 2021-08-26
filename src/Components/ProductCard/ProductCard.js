@@ -1,3 +1,4 @@
+import React from 'react';
 import './ProductCard.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -15,32 +16,34 @@ export default function ProductCard({
   deletePurchase,
   isProduct,
   isAdded,
-  handleTotal
+  handleTotal,
 }) {
   const [value, setValue] = useState(1);
   const floverImage =
     'https://flowers-expert.ru/upload/iblock/d30/d30417173593176bf61c7da7d52d7099.jpg';
-  const style = isProduct ? { width: '32em' } : { width: '60em' };
+  const style = isProduct ? { width: '32em' } : { maxWidth: '100%' };
   let selectArray = [];
   for (let i = 0; i < count; i++) {
     selectArray[i] = i + 1;
   }
-  useEffect(()=> {
-    handleTotal(calculatePrice(price, value))
-  }, [])
- 
+  useEffect(() => {
+    handleTotal(calculatePrice(price, value));
+  }, []);
+
   const addToCart = () => {
     addProduct(img, title, price, id, count);
   };
 
   const handleDelete = () => {
     deletePurchase(id);
+    handleTotal(calculatePrice(price, value));
   };
-  const handleChange = (e) => {
-    handleTotal(calculatePrice(price, e.target.value - value))
-    setValue(e.target.value);
 
+  const handleChangeCount = (e) => {
+    handleTotal(calculatePrice(price, e.target.value - value));
+    setValue(e.target.value);
   };
+
   return (
     <div className='card'>
       <Card style={style}>
@@ -62,7 +65,7 @@ export default function ProductCard({
                 name='select'
                 className='card__select'
                 value={value}
-                onChange={handleChange}
+                onChange={handleChangeCount}
               >
                 {selectArray.map((i) => {
                   return (

@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react';
 import Header from '../Header/Header';
 import ProductList from '../ProductList/ProductList';
 import Footer from '../Footer/Footer';
@@ -55,7 +56,9 @@ function App() {
             {isLoading ? (
               <Preloader />
             ) : (
-              <ProductList products={initialProducts} addProduct={addProduct} 
+              <ProductList
+                products={initialProducts}
+                addProduct={addProduct}
                 purchaseList={purchaseList}
               />
             )}
@@ -78,4 +81,4 @@ function App() {
 
 export default App;
 
-//TODO shadow in header, cart with price, count
+//TODO shadow in header, cart with price, count, gitLens

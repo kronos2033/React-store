@@ -1,9 +1,10 @@
+import React from 'react';
 import './Header.css';
 import Cart from '../Cart/Cart';
 import logo from '../../img/logo.svg';
 import { Link } from 'react-router-dom';
 
-export default function Header({counter}) {
+export default function Header({ counter }) {
   return (
     <header className='header'>
       <Link to='/'>
@@ -13,7 +14,7 @@ export default function Header({counter}) {
         <b>R</b>eact <b>S</b>tore
       </p>
       <Link to='/purchases'>
-        <Cart counter={counter}/>
+        <Cart counter={counter} />
       </Link>
     </header>
   );

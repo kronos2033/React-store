@@ -4,7 +4,6 @@ import './ProductList.css';
 
 export default function ProductList({ products, addProduct, purchaseList }) {
   return (
-
     <div className='product-list'>
       {products.map((product) => {
         const isAdded = purchaseList.some(

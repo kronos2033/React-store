@@ -1,29 +1,22 @@
+import React from 'react';
 import './Purchases.css';
 import ProductCard from '../ProductCard/ProductCard';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Purchases({ purchaseList, deletePurchase }) {
   const isProduct = false;
-  // let initialPrice = 0
-  // const [priceForOne, setPriceForOne] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0)
-  // initialPrice +=priceForOne
-  
-  // useEffect(()=> {
-  //   setTotalPrice(totalPrice => {
-  //     return  priceForOne
-  //   })
-  // },[priceForOne])
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const calculateTotal = (price) => {
-    setTotalPrice(prevPrice=>prevPrice + price)
- }
+    setTotalPrice((prevPrice) => prevPrice + price);
+  };
 
+  const a = 2;
+  console.log(a);
   return (
     <div className='purchases'>
       <h2 className='purchases__title'>Корзина</h2>
       {purchaseList.map((purchase) => {
-        {/* initialPrice = initialPrice + purchase.price */}
         return (
           <ProductCard
             key={purchase.id}
@@ -34,9 +27,7 @@ export default function Purchases({ purchaseList, deletePurchase }) {
             count={purchase.count}
             deletePurchase={deletePurchase}
             isProduct={isProduct}
-            // setPrice={setPriceForOne}
             handleTotal={calculateTotal}
-         
           />
         );
       })}
@@ -44,3 +35,5 @@ export default function Purchases({ purchaseList, deletePurchase }) {
     </div>
   );
 }
+
+//TODO ESlint || Jshint
